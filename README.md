@@ -19,4 +19,4 @@ Run commands
 3. `yarn run dev`
 
 Visit a Website:
-https://amazon-clone-blue.vercel.app/
+https://amazon-clone-mtbsxjev7-rosiu98.vercel.app/
