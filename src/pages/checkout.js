@@ -7,7 +7,7 @@ import Currency from "react-currency-formatter";
 import { useSession } from "next-auth/client";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
-const stipePromise = loadStripe(process.env.stripe_public_key);
+const stripePromise = loadStripe(process.env.stripe_public_key);
 
 function Checkout() {
     const items = useSelector(selectItems);
@@ -24,6 +24,15 @@ function Checkout() {
             email: session.user.email,
         }
         )
+
+
+        //Redirect user/customer to Stripe Checkout
+        const result = await stripe.redirectToCheckout({
+            sessionId: checkoutSession.data.id
+        })
+
+        if(result.error) alert(result.error.message)
+    
     }
 
     return (
